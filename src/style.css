@@ -1,0 +1,27 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+   
+
+    height: 100vh;
+  
+    grid-template-areas: 
+    'nav header header header'
+    'nav contentarea contentarea contentarea'
+    'nav contentarea contentarea contentarea'
+    'nav contentarea contentarea contentarea'
+}
+
+.topbar{
+    grid-area: header ;
+  
+}
+
+.leftbar{
+    grid-area:  nav;
+
+}
+
+.content{
+    grid-area: contentarea;
+}

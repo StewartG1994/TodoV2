@@ -1,1 +1,18 @@
-(self.webpackChunktodov2=self.webpackChunktodov2||[]).push([[179],{138:()=>{}},e=>{e(e.s=138)}]);
+(self["webpackChunktodov2"] = self["webpackChunktodov2"] || []).push([["main"],{
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ (() => {
+
+
+
+/***/ })
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
+/******/ }
+]);

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
+  mode:'development',
   entry: './src/index.js',
   output: {
     filename: '[name].bundle.js',
@@ -17,10 +18,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Todo App',
+      template : 'src/index.html'
     }),
   ],
 
   module: {
+
+
     rules: [
       {
         test: /\.css$/i,
