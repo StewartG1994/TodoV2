@@ -1,6 +1,8 @@
 import './style.css'
-import { projectArray, todoArrayAddition,todoFactory } from './info'
-todoArrayAddition(projectArray[0].todoArray,todoFactory('test','test','test','test','test'))
-todoArrayAddition(projectArray[0].todoArray,todoFactory('test2','test2','test2','test2','test2'))
-
+import { projectArray} from './info'
+import {projectListDom} from './dom'
 console.log(projectArray)
+projectListDom(projectArray)
+const projectListNode = document.querySelector('.projectList');
+
+console.log(projectListNode)

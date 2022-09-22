@@ -75,7 +75,23 @@ table {
 .leftbar{
     grid-area:  nav;
     background-color: #415a77;
+}
 
+ul{
+    color: #e0e1dd;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+
+.projectHeader{
+    color: #e0e1dd;
+    font-size: 1.4rem;
+    justify-self: center;
 }
 
 .content{
