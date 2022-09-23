@@ -77,7 +77,7 @@ table {
     background-color: #415a77;
 }
 
-ul{
+.projectList{
     color: #e0e1dd;
     display: flex;
     align-items: flex-start;
@@ -97,4 +97,19 @@ ul{
 .content{
     grid-area: contentarea;
     background-color:  #e0e1dd;  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    padding: 15px;
+    gap: 10px;
+}
+
+.projectCards{
+    width: 90%;
+    background-color: #F4F4F2;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    box-shadow: 7px 19px 21px 11px #CFD1CB; 
+    align-items: center;
 }
