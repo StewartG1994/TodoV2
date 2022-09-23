@@ -11,19 +11,31 @@ function projectListDom(array){
     }
 }
 
-function cardMaker (item) {
+function cardMaker (item,index) {
     const card = document.createElement('div');
     card.className = 'projectCards'
     const header = document.createElement('h1');
     const description = document.createElement('p');
     const dueDate = document.createElement('p');
     const priority = document.createElement('p');
-    const notes = document.createElement('p');
+    const noteDiv = document.createElement('div');
+    noteDiv.className = 'notesDiv';
+  
+    const notes = document.createElement('h3');
+    notes.className = 'notesNode';
+    notes.id = index;
+    const notesP = document.createElement('p');
+    notesP.classList = ('dropdown-notes')
+
 
     header.textContent = item.title
     description.textContent = item.description;
     dueDate.textContent = item.dueDate;
-    notes.textContent = item.notes;
+    notes.textContent = 'Notes';
+    notesP.textContent = item.notes
+    notesP.id = 'noteId' + index;
+
+
 
     const checkboxdiv = document.createElement('div');
     const checkbox = document.createElement('input');
@@ -39,7 +51,9 @@ function cardMaker (item) {
     card.appendChild(description);
     card.appendChild(dueDate);
     card.appendChild(priority);
-    card.appendChild(notes);
+    noteDiv.appendChild(notes)
+    noteDiv.appendChild(notesP)
+    card.appendChild(noteDiv)
     card.appendChild(checkboxLabel)
     checkboxdiv.appendChild(checkbox)
     checkboxdiv.appendChild(checkboxLabel);
@@ -50,11 +64,27 @@ function cardMaker (item) {
 
 function projectCardDisplay(array){
     for (let i = 0; i < array.length; i++){
-        cardMaker(array[i])
+        let index = array.indexOf(array[i])
+        cardMaker(array[i], index)
 
     }
 }
 
-export {projectListDom , projectCardDisplay}
+function projectDropDowns () {
+
+  let test = document.querySelectorAll('.notesDiv')
+  let contentP = document.querySelector('.dropdown-notes');
+  test.forEach(test  => test.addEventListener('click', event => {
+    console.log(event.target.id)
+    contentP.classList.toggle('displayDropDown')
+  
+  }))
+
+
+        
+        
+}
+
+export {projectListDom , projectCardDisplay , projectDropDowns}
 
 //title, description, dueDate, priority, notes, checklist, todoArray

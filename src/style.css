@@ -113,3 +113,15 @@ table {
     box-shadow: 7px 19px 21px 11px #CFD1CB; 
     align-items: center;
 }
+
+.dropdown-notes {
+    display: none;
+    position: absolute;
+    padding-top: 5px;
+    min-width: 160px;
+    z-index: 1;
+  }
+
+  .displayDropDown {
+    display: block;
+  }
