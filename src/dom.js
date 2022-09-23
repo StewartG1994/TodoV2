@@ -20,10 +20,8 @@ function cardMaker (item,index) {
     const priority = document.createElement('p');
     const noteDiv = document.createElement('div');
     noteDiv.className = 'notesDiv';
-  
     const notes = document.createElement('h3');
     notes.className = 'notesNode';
-    notes.id = index;
     const notesP = document.createElement('p');
     notesP.classList = ('dropdown-notes')
 
@@ -33,10 +31,7 @@ function cardMaker (item,index) {
     dueDate.textContent = item.dueDate;
     notes.textContent = 'Notes';
     notesP.textContent = item.notes
-    notesP.id = 'noteId' + index;
-
-
-
+  
     const checkboxdiv = document.createElement('div');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -73,10 +68,12 @@ function projectCardDisplay(array){
 function projectDropDowns () {
 
   let test = document.querySelectorAll('.notesDiv')
-  let contentP = document.querySelector('.dropdown-notes');
+  
   test.forEach(test  => test.addEventListener('click', event => {
-    console.log(event.target.id)
-    contentP.classList.toggle('displayDropDown')
+    let contentP = event.target.parentNode;
+    let dropDown = contentP.lastChild;
+
+    dropDown.classList.toggle('displayDropDown')
   
   }))
 
