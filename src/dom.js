@@ -2,19 +2,23 @@ import { projectArray } from './info';
 import down from './svg/down.png'
 
 const projectListNode = document.querySelector('.listUI');
-const content = document.querySelector('.content')
+const content = document.querySelector('.content');
+
+function liDisplay (item) {
+  
+    const projectLi = document.createElement('li')
+    projectLi.textContent = item.title;
+    projectListNode.appendChild(projectLi);
+}
 
 function projectListDom(array){
 
+
+
     for (let i = 0; i < array.length; i++) {
-        let projectLi = document.createElement('li')
-        let dataInfo =  array.indexOf(array[i])
-        projectLi.setAttribute('data', dataInfo ) ;
-        projectLi.textContent = array[i].title;
-        projectListNode.appendChild(projectLi);
-        console.log(array[i].title);
-    }
-}
+        liDisplay(array[i])
+    }}
+
 
 function cardMaker (item,index) {
     const card = document.createElement('div');
@@ -99,14 +103,21 @@ function deleteProject (){
 
    deleteBtn.forEach(button => button.addEventListener('click', event =>{
    const cardNumber = event.target.parentNode.parentNode.id;
-   projectArray.splice(cardNumber,1)
+   projectArray.pop(cardNumber)
    let cardRemove = event.target.parentNode.parentNode;
    content.removeChild(cardRemove)
-   console.log(projectListNode.id(cardNumber))
-    }))
+   console.log(projectArray)
+   projectListNode.textContent = null;
+   projectListDom(projectArray)
+
+}))
+
+}
+
+function addProject (){
+    const addProject = document.querySelector('.todoheader');
+    addProject.addEventListener('click', )
 
 }
 
 export {projectListDom , projectCardDisplay , projectDropDowns , deleteProject}
-
-//title, description, dueDate, priority, notes, checklist, todoArray
