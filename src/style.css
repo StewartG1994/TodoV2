@@ -99,9 +99,10 @@ table {
     background-color:  #e0e1dd;  
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    
 
     padding: 15px;
-    gap: 10px;
+    gap: 20px;
 }
 
 .projectCards{
@@ -114,14 +115,45 @@ table {
     align-items: center;
 }
 
+.headerDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.viewProjectButton{
+    margin-left:auto;
+    border-radius: 5px;
+    padding: 7px;
+    border: none;
+    background-color: #77DD77;
+}
+
+.deleteheaderButton{
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #FF6961;
+    border: none;
+}
+.notesDiv{
+    display: flex;
+    flex-direction: column;
+}
+
 .dropdown-notes {
     display: none;
-    position: absolute;
-    padding-top: 5px;
+    position: relative;
+    padding-top: 10px;
     min-width: 160px;
     z-index: 1;
+    max-width: 100%;
   }
 
   .displayDropDown {
-    display: block;
+    display: flex;
   }
+
+input[type=checkbox]{
+    padding: 15px;
+    margin: 0px;    
+}

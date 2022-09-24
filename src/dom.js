@@ -1,20 +1,47 @@
-const projectListNode = document.querySelector('.projectList');
+import { projectArray } from './info';
+import down from './svg/down.png'
+
+const projectListNode = document.querySelector('.listUI');
 const content = document.querySelector('.content')
 
 function projectListDom(array){
+
     for (let i = 0; i < array.length; i++) {
         let projectLi = document.createElement('li')
+        let dataInfo =  array.indexOf(array[i])
+        projectLi.setAttribute('data', dataInfo ) ;
         projectLi.textContent = array[i].title;
         projectListNode.appendChild(projectLi);
         console.log(array[i].title);
-        
     }
 }
 
 function cardMaker (item,index) {
     const card = document.createElement('div');
-    card.className = 'projectCards'
+    card.id=index;
+
+    const headerDiv =document.createElement('div');
+    headerDiv.className = 'headerDiv'
+    const viewProjectBtn = document.createElement('button');
+    viewProjectBtn.textContent = 'View'
+    const deleteProjectBtn = document.createElement('button');
+    deleteProjectBtn.className = 'deleteheaderButton'
+    viewProjectBtn.className = 'viewProjectButton'
+
+    deleteProjectBtn.textContent = 'Delete';
     const header = document.createElement('h1');
+    header.textContent = item.title
+    headerDiv.appendChild(header)
+    headerDiv.appendChild(viewProjectBtn)
+    headerDiv.appendChild(deleteProjectBtn)
+
+
+
+
+    const downImg = new Image();
+    downImg.src = down
+ 
+    card.className = 'projectCards'
     const description = document.createElement('p');
     const dueDate = document.createElement('p');
     const priority = document.createElement('p');
@@ -25,39 +52,28 @@ function cardMaker (item,index) {
     const notesP = document.createElement('p');
     notesP.classList = ('dropdown-notes')
 
+    description.textContent =  item.description;
+    dueDate.textContent =  item.dueDate;
 
-    header.textContent = item.title
-    description.textContent = item.description;
-    dueDate.textContent = item.dueDate;
-    notes.textContent = 'Notes';
+    notes.textContent = 'Notes ';
+    notes.appendChild(downImg)
+
     notesP.textContent = item.notes
-  
-    const checkboxdiv = document.createElement('div');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = 'checkboxId';
-    checkbox.name = 'checklist';
-    checkbox.value = 'checklist';
-    const checkboxLabel = document.createElement('label')
-    checkboxLabel.htmlFor = 'checkbox'
-    checkboxLabel.textContent = item.checklist;
+    priority.textContent = item.priority;
     
-    card.appendChild(header);
+    card.appendChild(headerDiv);
     card.appendChild(description);
     card.appendChild(dueDate);
     card.appendChild(priority);
     noteDiv.appendChild(notes)
     noteDiv.appendChild(notesP)
     card.appendChild(noteDiv)
-    card.appendChild(checkboxLabel)
-    checkboxdiv.appendChild(checkbox)
-    checkboxdiv.appendChild(checkboxLabel);
-    card.appendChild(checkboxdiv)
     content.appendChild(card)
 }
 
 
 function projectCardDisplay(array){
+
     for (let i = 0; i < array.length; i++){
         let index = array.indexOf(array[i])
         cardMaker(array[i], index)
@@ -71,17 +87,26 @@ function projectDropDowns () {
   
   test.forEach(test  => test.addEventListener('click', event => {
     let contentP = event.target.parentNode;
-    let dropDown = contentP.lastChild;
-
-    dropDown.classList.toggle('displayDropDown')
+    let dropdown = contentP.parentNode.lastChild ;
+   dropdown.classList.toggle('displayDropDown')
   
   }))
-
-
-        
-        
+      
 }
 
-export {projectListDom , projectCardDisplay , projectDropDowns}
+function deleteProject (){
+   let deleteBtn = document.querySelectorAll('.deleteheaderButton');
+
+   deleteBtn.forEach(button => button.addEventListener('click', event =>{
+   const cardNumber = event.target.parentNode.parentNode.id;
+   projectArray.splice(cardNumber,1)
+   let cardRemove = event.target.parentNode.parentNode;
+   content.removeChild(cardRemove)
+   console.log(projectListNode.id(cardNumber))
+    }))
+
+}
+
+export {projectListDom , projectCardDisplay , projectDropDowns , deleteProject}
 
 //title, description, dueDate, priority, notes, checklist, todoArray
