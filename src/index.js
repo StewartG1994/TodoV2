@@ -1,11 +1,13 @@
 import './style.css'
-import { projectArray} from './info'
-import {projectListDom, projectCardDisplay, projectDropDowns, deleteProject, addProject} from './dom'
+import { projectArray,openModal, submitProject} from './info'
+import {projectListDom, projectCardDisplay, projectDropDowns, deleteProject} from './dom'
 
 
 projectListDom(projectArray)
 projectCardDisplay(projectArray)
 projectDropDowns()
+
+openModal()
+submitProject()
 deleteProject()
-addProject()
 

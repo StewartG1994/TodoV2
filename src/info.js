@@ -1,3 +1,5 @@
+import { projectCardDisplay, deleteProject, projectListDom } from "./dom";
+
 const projectArray = [];
 const projectFactory = (title, description, dueDate, priority, notes, checklist, todoArray) =>{
     todoArray = []
@@ -17,10 +19,44 @@ function todoArrayAddition (array, item) {
     array.push(item)
 }
 
+function openModal (){
+    const addProject = document.querySelector('.todoheader');
+    const modal = document.querySelector('.projectModal');
+    const close = document.querySelector('.close')
 
-projectAddition(projectFactory('Create new logo', 'Create a new logo design to be used throughout new business launch', '26/02/2023', 'High', 'To be updated'))
-projectAddition(projectFactory('Test project', 'Create a new logo design to be used throughout new business launch', '26/02/2023', 'High', 'To be updated 2'))
-projectAddition(projectFactory('Test thrice', 'Create a new logo design to be used throughout new business launch', '26/02/2023', 'High', ' To be updated 3 To be updated 3 To be updated 3 To be updated 3 To be updated 3 To be updated 3'))
+    addProject.addEventListener('click', () => {
+        modal.style.display = 'block';
+    })
+
+    close.addEventListener('click', () =>{modal.style.display = 'none'})
+
+}
+
+function submitProject(){
+    const modal = document.querySelector('.projectModal');
+
+    const submitButton = document.querySelector('.submitProject')
+    const projectName =document.getElementById('projectName')
+    const description =document.getElementById('description')
+    const dueDate =document.getElementById('dueDate')
+    const priority = document.getElementById('priority')
+    const notes = document.getElementById('notes')
+
+    submitButton.addEventListener('click', () => {
+
+        projectAddition(projectFactory(projectName.value, description.value, dueDate.value, priority.value, notes.value))
+        projectCardDisplay(projectArray)
+        modal.style.display = 'none'
+        projectListDom(projectArray)
+        deleteProject()
+
+    })
+    
+}
 
 
-export {projectArray,todoArrayAddition, todoFactory }
+projectAddition(projectFactory('Default Project', 'Use the description box to create a brief outline of the project and tasks', '26/02/2023', 'High', 'Noootes notes wonderful notes'))
+
+
+
+export {projectArray,todoArrayAddition, todoFactory,openModal , submitProject }

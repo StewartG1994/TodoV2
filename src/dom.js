@@ -4,16 +4,6 @@ import down from './svg/down.png'
 const projectListNode = document.querySelector('.listUI');
 const content = document.querySelector('.content');
 
-function addProject (){
-    const addProject = document.querySelector('.todoheader');
-    const modal = document.querySelector('.projectModal');
-
-    addProject.addEventListener('click', () => {
-        modal.style.display = 'block';
-    })
-
-}
-
 function liDisplay (item) {
   
     const projectLi = document.createElement('li')
@@ -22,6 +12,7 @@ function liDisplay (item) {
 }
 
 function projectListDom(array){
+    projectListNode.textContent = null;
 
     for (let i = 0; i < array.length; i++) {
         liDisplay(array[i])
@@ -84,6 +75,7 @@ function cardMaker (item,index) {
 
 
 function projectCardDisplay(array){
+    content.textContent = null;
 
     for (let i = 0; i < array.length; i++){
         let index = array.indexOf(array[i])
@@ -109,6 +101,7 @@ function deleteProject (){
    let deleteBtn = document.querySelectorAll('.deleteheaderButton');
 
    deleteBtn.forEach(button => button.addEventListener('click', event =>{
+    console.log('DeleteTest')
    const cardNumber = event.target.parentNode.parentNode.id;
    const indexObject = projectArray.findIndex(object =>{
    return  object.title === cardNumber;
@@ -125,5 +118,5 @@ function deleteProject (){
 
 
 
-export {projectListDom , projectCardDisplay , projectDropDowns , deleteProject ,addProject}
+export {projectListDom , projectCardDisplay , projectDropDowns , deleteProject }
 

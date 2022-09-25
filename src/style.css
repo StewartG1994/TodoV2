@@ -212,5 +212,20 @@ input[type=checkbox]{
   }
 
   .close{
+    display: flex;
     margin-left: auto;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #FF6961;
+    border: none;
+  }
+
+  .submitProject{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 7px;
+    border: none;
+    background-color: #77DD77;
   }
