@@ -9,12 +9,40 @@
         <title><%= htmlWebpackPlugin.options.title %></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
       
     </head>
     <body>
         <div class="container">
 
-<div class="topbar"><button class ='todoheader'>+ Project</button></div>
+<div class="projectModal">
+    <div class="modalContent">
+    <span class="close">&times;</span>
+    <form class = 'projectForm'>
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" name="projectName">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description">
+                <label for="dueDate">Due Date:</label>
+                <input type="text" id="dueDate" name="dueDate">
+                <label for="dueDate">Priority:</label>
+                <select id="priority" name="priority">
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+
+                <label for="notes">Notes:</label>
+                <input type="text" id="notes" name="notes">
+              </form>
+          
+          
+            </div>
+            </div>
+
+<div class="topbar"><button class ='todoheader'  type="button">+ Project</button></div>
 <div class="leftbar">
 
 
@@ -29,3 +57,4 @@
       
     </body>
 </html>
+

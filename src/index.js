@@ -1,16 +1,11 @@
 import './style.css'
 import { projectArray} from './info'
-import {projectListDom, projectCardDisplay, projectDropDowns, deleteProject} from './dom'
-console.log(projectArray)
+import {projectListDom, projectCardDisplay, projectDropDowns, deleteProject, addProject} from './dom'
+
 
 projectListDom(projectArray)
 projectCardDisplay(projectArray)
 projectDropDowns()
 deleteProject()
+addProject()
 
-const projectListNode = document.querySelector('.projectList');
-
-
-
-
-console.log(projectListNode)
