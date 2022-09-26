@@ -1,24 +1,28 @@
-import { projectCardDisplay, deleteProject, projectListDom } from "./dom";
+import { projectCardDisplay, deleteProject, projectListDom, projectDropDowns } from "./dom";
 
 const projectArray = [];
 const projectFactory = (title, description, dueDate, priority, notes, checklist, todoArray) =>{
-    todoArray = []
+    todoArray = ['test', 'test']
 
     return {title, description, dueDate, priority ,notes , checklist, todoArray}
 }
-
-const todoFactory = (task, description,dueDate, priority, completed) =>
- {  return{ task, description,dueDate, priority, completed}}
-
 
 function projectAddition (item) {
     projectArray.push(item);    
 }
 
-function todoArrayAddition (array, item) {
-    array.push(item)
-}
 
+
+function clearModal (){
+    const projectName =document.getElementById('projectName')
+    const description =document.getElementById('description')
+    const dueDate =document.getElementById('dueDate')
+    const notes = document.getElementById('notes')
+    notes.value= ''
+    dueDate.value = ''
+    description.value = ''
+    projectName.value = ''
+}
 function openModal (){
     const addProject = document.querySelector('.todoheader');
     const modal = document.querySelector('.projectModal');
@@ -26,6 +30,7 @@ function openModal (){
 
     addProject.addEventListener('click', () => {
         modal.style.display = 'block';
+        clearModal()
     })
 
     close.addEventListener('click', () =>{modal.style.display = 'none'})
@@ -41,6 +46,7 @@ function submitProject(){
     const dueDate =document.getElementById('dueDate')
     const priority = document.getElementById('priority')
     const notes = document.getElementById('notes')
+  
 
     submitButton.addEventListener('click', () => {
 
@@ -49,6 +55,9 @@ function submitProject(){
         modal.style.display = 'none'
         projectListDom(projectArray)
         deleteProject()
+        clearModal()
+        projectDropDowns()
+
 
     })
     
@@ -59,4 +68,4 @@ projectAddition(projectFactory('Default Project', 'Use the description box to cr
 
 
 
-export {projectArray,todoArrayAddition, todoFactory,openModal , submitProject }
+export {projectArray, openModal , submitProject }
