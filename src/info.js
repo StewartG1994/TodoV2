@@ -2,7 +2,7 @@ import { projectCardDisplay, deleteProject, projectListDom, projectDropDowns } f
 
 const projectArray = [];
 const projectFactory = (title, description, dueDate, priority, notes, checklist, todoArray) =>{
-    todoArray = ['test', 'test']
+    todoArray = []
 
     return {title, description, dueDate, priority ,notes , checklist, todoArray}
 }

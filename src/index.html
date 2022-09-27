@@ -21,11 +21,11 @@
     <div class="modalContent">
         <button class ='close'  type="button">Close</button>
     <form class = 'projectForm'>
-                <label for="projectName">Project Name:</label>
+                <label id = projectNameLabel for="projectName">Project Name:</label>
                 <input type="text" id="projectName" name="projectName">
-                <label for="description">Description:</label>
+                <label id = descriptionLabel for="description">Description:</label>
                 <input type="text" id="description" name="description">
-                <label for="dueDate">Due Date:</label>
+                <label id = dueDateLabel for="dueDate">Due Date:</label>
                 <input type="text" id="dueDate" name="dueDate">
                 <label for="dueDate">Priority:</label>
                 <select id="priority" name="priority">
@@ -34,15 +34,18 @@
                   <option value="Low">Low</option>
                 </select>
 
-                <label for="notes">Notes:</label>
+                <label id = 'notesLabel' for="notes">Notes:</label>
                 <input type="text" id="notes" name="notes">
                 <button class ='submitProject'  type="button">Submit</button>
+                <button class ='submitTask'  type="button">Submit</button>
+
 
               </form>
           
           
             </div>
             </div>
+
 
 <div class="topbar"><button class ='todoheader'  type="button">+ Project</button></div>
 <div class="leftbar">

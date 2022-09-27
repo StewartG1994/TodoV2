@@ -80,6 +80,16 @@ table {
     box-shadow: 7px 19px 21px 11px #CFD1CB; 
 }
 
+.taskheader{
+    background-color: #F4F4F2;
+    font-size: 4rem;
+    border: none;
+    background-color: #F4F4F2;
+    border-radius: 10px;
+    padding: 20px 50px 20px 50px;
+    box-shadow: 7px 19px 21px 11px #CFD1CB; 
+}
+
 .todoheader:hover{
     transform: scale(1.01);
 }
@@ -229,3 +239,29 @@ input[type=checkbox]{
     border: none;
     background-color: #77DD77;
   }
+
+  .submitTask{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 7px;
+    border: none;
+    background-color: #77DD77;
+  }
+
+.taskModal{
+    display: none;
+}
+
+.backHeader{
+width: 80%;
+border: none;
+background-color: #415a77;
+color: #e0e1dd;
+font-size: 1.2rem;
+text-align: left;
+padding-bottom: 10px;
+
+    
+}
