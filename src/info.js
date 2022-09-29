@@ -13,6 +13,31 @@ function projectAddition (item) {
     projectArray.push(item);    
 }
 
+function projectModalNodeEdit(){
+    const headerBtn = document.querySelector('.todoheader');
+    const modal = document.querySelector('.projectModal');
+    const submitButton = document.querySelector('.submitProject')
+    const taskSubmit = document.querySelector('.submitTask')
+    const projectName =document.getElementById('projectNameLabel')
+    const description =document.getElementById('descriptionLabel')
+    const dueDate =document.getElementById('dueDateLabel')
+    const priority = document.getElementById('priority')
+    const notes = document.getElementById('notes')
+    const notesLabel = document.getElementById('notesLabel')
+
+    headerBtn.addEventListener('click', () =>
+   {
+    projectName.textContent = 'Project Name';
+    notes.style.display = 'block';
+    notesLabel.style.display = 'block';
+    submitButton.style.display = 'block'
+    taskSubmit.textContent= 'Submit Task'
+    taskSubmit.style.display = 'none'
+    modal.style.display = 'block'
+   } )
+
+}
+
 
 
 function clearModal (){
@@ -31,8 +56,10 @@ function openModal (){
     const close = document.querySelector('.close')
 
     addProject.addEventListener('click', () => {
+        projectModalNodeEdit()
         modal.style.display = 'block';
         clearModal()
+        
     })
 
     close.addEventListener('click', () =>{modal.style.display = 'none'})
@@ -55,12 +82,11 @@ function submitProject(){
         projectAddition(projectFactory(projectName.value, description.value, dueDate.value, priority.value, notes.value))
         projectCardDisplay(projectArray)
         modal.style.display = 'none'
-        projectListDom(projectArray)
         deleteProject()
         clearModal()
-        projectDropDowns()
         viewProject()
-
+        projectDropDowns()
+        projectListDom(projectArray)
 
     })
     
@@ -71,4 +97,4 @@ projectAddition(projectFactory('Default Project', 'Use the description box to cr
 
 
 
-export {projectArray, openModal , submitProject }
+export {projectArray, openModal , submitProject , projectModalNodeEdit}

@@ -1,5 +1,5 @@
-import { projectCardDisplay } from "./dom";
-import { projectArray } from "./info";
+import { projectCardDisplay ,projectDropDowns} from "./dom";
+import { projectArray, projectModalNodeEdit } from "./info";
 
 let currentArray= null;
 const backHeader = document.createElement('button');
@@ -118,17 +118,19 @@ function taskCardDisplay(array){
 }
 
 function viewProject(){
-    const viewButton = document.querySelector('.viewProjectButton');
+    const viewButton = document.querySelectorAll('.viewProjectButton');
     const projectList = document.querySelector('.projectList')
     const content = document.querySelector('.content');
     const headerBtn = document.querySelector('.todoheader')
     const projectTitle = document.querySelector('.projectHeader')
 
-   
-    viewButton.addEventListener('click', event =>{
+
+   viewButton.forEach(element => {
+    element.addEventListener('click', event =>{
+        console.log('test')
     headerBtn.textContent = '+ Task';
         content.textContent = null;
-        backHeader.style.display = 'block';
+        backHeader.style.display = 'flex';
         const backHeaderH1 = document.createElement('h1');
         backHeader.appendChild(backHeaderH1)
         backHeader.className = 'backHeader';
@@ -146,7 +148,12 @@ function viewProject(){
         console.log(currentArray.todoArray)
          projectListDom(currentArray.todoArray)
          taskModalNodeEdit()
+         taskCardDisplay(currentArray.todoArray)
     })
+
+    
+   });
+
 
 
 
@@ -155,15 +162,20 @@ function viewProject(){
 function returnBtn (){
 
 const headerBtn = document.querySelector('.todoheader')
+const projectLI = document.querySelector('.projectList')
 
 backHeader.addEventListener('click', () =>{
     projectCardDisplay(projectArray)
+    projectModalNodeEdit()
     backHeader.style.display = 'none';
+   
+    
     backHeader.textContent = null;
     headerBtn.textContent = '+ Project'
     projectListDom(projectArray)
     viewProject()
+    projectDropDowns()
    })
 }
 
-export {viewProject, pushModalTask}
+export {viewProject, pushModalTask,returnBtn}

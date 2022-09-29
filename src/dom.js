@@ -19,6 +19,8 @@ function projectListDom(array){
     }}
 
 
+
+
 function cardMaker (item,index) {
     const card = document.createElement('div');
     card.id=item.title;
