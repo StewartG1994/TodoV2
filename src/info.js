@@ -1,4 +1,6 @@
 import { projectCardDisplay, deleteProject, projectListDom, projectDropDowns } from "./dom";
+import { viewProject } from './viewProject';
+
 
 const projectArray = [];
 const projectFactory = (title, description, dueDate, priority, notes, checklist, todoArray) =>{
@@ -57,6 +59,7 @@ function submitProject(){
         deleteProject()
         clearModal()
         projectDropDowns()
+        viewProject()
 
 
     })

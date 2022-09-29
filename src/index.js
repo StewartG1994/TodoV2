@@ -1,7 +1,7 @@
 import './style.css'
 import { projectArray,openModal, submitProject} from './info'
 import {projectListDom, projectCardDisplay, projectDropDowns, deleteProject} from './dom'
-import {viewProject, pushModalTask} from './viewProject'
+import {viewProject, pushModalTask, returnBtn} from './viewProject'
 
 
 projectListDom(projectArray)

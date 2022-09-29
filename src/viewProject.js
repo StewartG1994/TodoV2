@@ -1,14 +1,13 @@
+import { projectCardDisplay } from "./dom";
 import { projectArray } from "./info";
+
 let currentArray= null;
+const backHeader = document.createElement('button');
+
 const test = ['test']
 
 const todoFactory = (task, description,dueDate, priority) =>
 {  return{ task, description,dueDate, priority}}
-
-
-function todoArrayAddition (array, item) {
-   array.push(item)
-}
 
 function taskModalNodeEdit(){
     const headerBtn = document.querySelector('.todoheader');
@@ -55,9 +54,6 @@ function pushModalTask(){
         content.textContent = null;
         taskCardDisplay(currentArray.todoArray)
         projectListDom(currentArray.todoArray)
-
-
-
     } )
 
     
@@ -127,11 +123,12 @@ function viewProject(){
     const content = document.querySelector('.content');
     const headerBtn = document.querySelector('.todoheader')
     const projectTitle = document.querySelector('.projectHeader')
+
    
     viewButton.addEventListener('click', event =>{
     headerBtn.textContent = '+ Task';
         content.textContent = null;
-        const backHeader = document.createElement('button');
+        backHeader.style.display = 'block';
         const backHeaderH1 = document.createElement('h1');
         backHeader.appendChild(backHeaderH1)
         backHeader.className = 'backHeader';
@@ -146,11 +143,27 @@ function viewProject(){
 
          currentArray = (projectArray[indexObject])
          projectTitle.textContent = currentArray.title;
+        console.log(currentArray.todoArray)
          projectListDom(currentArray.todoArray)
          taskModalNodeEdit()
-
     })
 
+
+
+}
+
+function returnBtn (){
+
+const headerBtn = document.querySelector('.todoheader')
+
+backHeader.addEventListener('click', () =>{
+    projectCardDisplay(projectArray)
+    backHeader.style.display = 'none';
+    backHeader.textContent = null;
+    headerBtn.textContent = '+ Project'
+    projectListDom(projectArray)
+    viewProject()
+   })
 }
 
 export {viewProject, pushModalTask}
