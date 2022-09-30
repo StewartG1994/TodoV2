@@ -25,6 +25,11 @@ function cardMaker (item,index) {
     const card = document.createElement('div');
     card.id=item.title;
     const headerDiv =document.createElement('div');
+    const buttonDiv = document.createElement('div')
+    buttonDiv.className = 'buttonDiv'
+    const headerTitle = document.createElement('h3');
+    headerTitle.className = 'headertitlecard';
+    headerTitle.textContent = 'Project Name'
     headerDiv.className = 'headerDiv'
     const viewProjectBtn = document.createElement('button');
     viewProjectBtn.textContent = 'View'
@@ -34,10 +39,13 @@ function cardMaker (item,index) {
 
     deleteProjectBtn.textContent = 'Delete';
     const header = document.createElement('h1');
-    header.textContent = item.title
+    header.textContent ='\n' + item.title
+    buttonDiv.appendChild(viewProjectBtn)
+    
+    buttonDiv.appendChild(deleteProjectBtn)
+    headerDiv.appendChild(headerTitle)
     headerDiv.appendChild(header)
-    headerDiv.appendChild(viewProjectBtn)
-    headerDiv.appendChild(deleteProjectBtn)
+
 
 
 
@@ -46,9 +54,25 @@ function cardMaker (item,index) {
     downImg.src = down
  
     card.className = 'projectCards'
+    const descriptionDiv = document.createElement('div');
+    const descriptionTitle = document.createElement('h3');
+    descriptionTitle.textContent = 'Description';
     const description = document.createElement('p');
+    const dueDateDiv = document.createElement('div');
+    descriptionDiv.appendChild(descriptionTitle)
+    descriptionDiv.appendChild(description)
     const dueDate = document.createElement('p');
+    const dueDateTitle = document.createElement('h3')
+    dueDateTitle.textContent= 'Due Date'
+    dueDateDiv.appendChild(dueDateTitle)
+    dueDateDiv.appendChild(dueDate)
+    const priorityDiv = document.createElement('div');
+    const priorityTitle =document.createElement('h3');
+    priorityTitle.textContent = 'Priority';
     const priority = document.createElement('p');
+    priorityDiv.appendChild(priorityTitle)
+    priorityDiv.appendChild(priority);
+    
     const noteDiv = document.createElement('div');
     noteDiv.className = 'notesDiv';
     const notes = document.createElement('h3');
@@ -64,11 +88,13 @@ function cardMaker (item,index) {
 
     notesP.textContent = item.notes
     priority.textContent = item.priority;
-    
+    card.appendChild(buttonDiv)
     card.appendChild(headerDiv);
-    card.appendChild(description);
-    card.appendChild(dueDate);
-    card.appendChild(priority);
+    card.appendChild(descriptionDiv);
+ 
+    card.appendChild(dueDateDiv)
+ 
+    card.appendChild(priorityDiv);
     noteDiv.appendChild(notes)
     noteDiv.appendChild(notesP)
     card.appendChild(noteDiv)

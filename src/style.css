@@ -145,18 +145,30 @@ table {
     
 }
 
+h3{
+    font-weight: bold;
+}
+
 .headerDiv {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
     gap: 10px;
 }
 
 .viewProjectButton{
-    margin-left:auto;
+
     border-radius: 5px;
     padding: 7px;
     border: none;
     background-color: #77DD77;
+    width: 45%;
+}
+
+.buttonDiv{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
 }
 
 .deleteheaderButton{
@@ -164,6 +176,9 @@ table {
     border-radius: 5px;
     background-color: #FF6961;
     border: none;
+    width: 45%;
+
+
 }
 .notesDiv{
     display: flex;
