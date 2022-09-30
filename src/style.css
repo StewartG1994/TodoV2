@@ -120,6 +120,7 @@ table {
     color: #e0e1dd;
     font-size: 1.4rem;
     justify-self: center;
+    padding-bottom: 10px;
 }
 
 .content{
@@ -141,6 +142,7 @@ table {
     display: grid;
     box-shadow: 7px 19px 21px 11px #CFD1CB; 
     align-items: center;
+    
 }
 
 .headerDiv {

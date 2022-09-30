@@ -78,6 +78,7 @@ function cardMaker (item,index) {
 
 function projectCardDisplay(array){
     content.textContent = null;
+    projectListDom(projectArray)
 
     for (let i = 0; i < array.length; i++){
         let index = array.indexOf(array[i])

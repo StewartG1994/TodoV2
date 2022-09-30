@@ -1,10 +1,8 @@
-import { projectCardDisplay ,projectDropDowns} from "./dom";
+import { projectCardDisplay ,projectDropDowns, deleteProject} from "./dom";
 import { projectArray, projectModalNodeEdit } from "./info";
 
 let currentArray= null;
 const backHeader = document.createElement('button');
-
-const test = ['test']
 
 const todoFactory = (task, description,dueDate, priority) =>
 {  return{ task, description,dueDate, priority}}
@@ -15,9 +13,6 @@ function taskModalNodeEdit(){
     const submitButton = document.querySelector('.submitProject')
     const taskSubmit = document.querySelector('.submitTask')
     const projectName =document.getElementById('projectNameLabel')
-    const description =document.getElementById('descriptionLabel')
-    const dueDate =document.getElementById('dueDateLabel')
-    const priority = document.getElementById('priority')
     const notes = document.getElementById('notes')
     const notesLabel = document.getElementById('notesLabel')
 
@@ -44,6 +39,8 @@ function pushModalTask(){
 
 
     taskSubmit.addEventListener('click', () =>{
+        taskModalNodeEdit()
+
         const content = document.querySelector('.content');
 
         console.log(currentArray.todoArray)
@@ -101,10 +98,10 @@ function liDisplay (item) {
 function projectListDom(array){
     const projectListNode = document.querySelector('.listUI');
     projectListNode.textContent = null;
- 
 
     for (let i = 0; i < array.length; i++) {
-       liDisplay(array[i].task)
+        console.log(array[i])
+     liDisplay(array[i].task)
     }}
 
 function taskCardDisplay(array){
@@ -135,6 +132,7 @@ function viewProject(){
         backHeader.appendChild(backHeaderH1)
         backHeader.className = 'backHeader';
         backHeaderH1.textContent = '< Back to projects'
+        console.log(projectTitle)
         projectList.insertBefore(backHeader, projectTitle)
     
         
@@ -144,8 +142,8 @@ function viewProject(){
         return  object.title === cardNumber;})
 
          currentArray = (projectArray[indexObject])
-         projectTitle.textContent = currentArray.title;
-        console.log(currentArray.todoArray)
+         projectTitle.textContent = 'List of tasks for ' + currentArray.title;
+         console.log(currentArray.todoArray)
          projectListDom(currentArray.todoArray)
          taskModalNodeEdit()
          taskCardDisplay(currentArray.todoArray)
@@ -163,18 +161,23 @@ function returnBtn (){
 
 const headerBtn = document.querySelector('.todoheader')
 const projectLI = document.querySelector('.projectList')
+const projectTitle = document.querySelector('.projectHeader')
+
 
 backHeader.addEventListener('click', () =>{
     projectCardDisplay(projectArray)
     projectModalNodeEdit()
     backHeader.style.display = 'none';
-   
+    projectLI.style.display = 'block'
+    projectTitle.textContent = 'List of projects'
     
     backHeader.textContent = null;
     headerBtn.textContent = '+ Project'
-    projectListDom(projectArray)
+    console.log(projectArray)
     viewProject()
+    deleteProject()
     projectDropDowns()
+    console.log(projectArray)
    })
 }
 
