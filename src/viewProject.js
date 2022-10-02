@@ -57,6 +57,7 @@ function pushModalTask(){
 }
 
 function displayTasks (item ,index){
+
     const content = document.querySelector('.content');
 
     const buttonDiv = document.createElement('div');
@@ -120,7 +121,6 @@ function displayTasks (item ,index){
     taskDescription.textContent = item.description
     dueDate.textContent = item.dueDate
     priority.textContent = item.priority
-    console.log(item)
 
     taskDivCard.appendChild(buttonDiv)
     taskDivCard.appendChild(taskDiv)
@@ -129,6 +129,7 @@ function displayTasks (item ,index){
     taskDivCard.appendChild(priorityDiv)
    
     content.appendChild(taskDivCard)
+    deleteTask()
 
 }
 
@@ -144,7 +145,7 @@ function projectListDom(array){
     projectListNode.textContent = null;
 
     for (let i = 0; i < array.length; i++) {
-        console.log(array[i])
+  
      liDisplay(array[i].task)
     }}
 
@@ -166,7 +167,7 @@ function viewProject(){
 
    viewButton.forEach(element => {
     element.addEventListener('click', event =>{
-        console.log('test')
+ 
     headerBtn.textContent = '+ Task';
         content.textContent = null;
         backHeader.style.display = 'flex';
@@ -174,7 +175,7 @@ function viewProject(){
         backHeader.appendChild(backHeaderH1)
         backHeader.className = 'backHeader';
         backHeaderH1.textContent = '< Back to projects'
-        console.log(projectTitle)
+     
         projectList.insertBefore(backHeader, projectTitle)
     
         
@@ -185,10 +186,10 @@ function viewProject(){
 
          currentArray = (projectArray[indexObject])
          projectTitle.textContent = 'List of tasks for ' + currentArray.title;
-         console.log(currentArray.todoArray)
          projectListDom(currentArray.todoArray)
          taskModalNodeEdit()
          taskCardDisplay(currentArray.todoArray)
+
     })
 
     
@@ -222,5 +223,30 @@ backHeader.addEventListener('click', () =>{
     console.log(projectArray)
    })
 }
+
+function deleteTask (){
+    const content = document.querySelector('.content');
+
+    let deleteBtn = document.querySelectorAll('.taskDeleteButton');
+    deleteBtn.forEach(button => button.addEventListener('click', event =>{
+     console.log('DeleteTestTaks')
+    const cardNumber = event.target.parentNode.parentNode.id;
+    console.log(cardNumber)
+    
+
+    const indexObject = currentArray.todoArray.findIndex(object =>{
+        return  object.title === cardNumber;
+        })
+
+    console.log(indexObject)
+
+
+    let cardRemove = event.target.parentNode.parentNode;
+    content.removeChild(cardRemove)
+
+ 
+ }))
+ 
+ }
 
 export {viewProject, pushModalTask,returnBtn}
