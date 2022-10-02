@@ -18,9 +18,6 @@ function projectListDom(array){
         liDisplay(array[i])
     }}
 
-
-
-
 function cardMaker (item,index) {
     const card = document.createElement('div');
     card.id=item.title;
@@ -45,10 +42,6 @@ function cardMaker (item,index) {
     buttonDiv.appendChild(deleteProjectBtn)
     headerDiv.appendChild(headerTitle)
     headerDiv.appendChild(header)
-
-
-
-
 
     const downImg = new Image();
     downImg.src = down
@@ -88,8 +81,10 @@ function cardMaker (item,index) {
 
     notesP.textContent = item.notes
     priority.textContent = item.priority;
+   
     card.appendChild(buttonDiv)
-    card.appendChild(headerDiv);
+    card.appendChild(headerDiv)
+
     card.appendChild(descriptionDiv);
  
     card.appendChild(dueDateDiv)
@@ -101,7 +96,6 @@ function cardMaker (item,index) {
     content.appendChild(card)
 }
 
-
 function projectCardDisplay(array){
     content.textContent = null;
     projectListDom(projectArray)
@@ -109,7 +103,6 @@ function projectCardDisplay(array){
     for (let i = 0; i < array.length; i++){
         let index = array.indexOf(array[i])
         cardMaker(array[i], index)
-
     }
 }
 
@@ -144,8 +137,6 @@ function deleteProject (){
 }))
 
 }
-
-
 
 export {projectListDom , projectCardDisplay , projectDropDowns , deleteProject }
 

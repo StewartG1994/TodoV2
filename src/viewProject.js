@@ -56,13 +56,46 @@ function pushModalTask(){
     
 }
 
-function displayTasks (item){
+function displayTasks (item ,index){
     const content = document.querySelector('.content');
+
+    const buttonDiv = document.createElement('div');
+    const editButton  = document.createElement('button');
+    const deleteBtn = document.createElement('button');
+    editButton.className = 'editButton';
+    deleteBtn.className = 'taskDeleteButton'
+    buttonDiv.className = 'buttonDiv'
+
+    editButton.textContent = 'Edit';
+    deleteBtn.textContent = 'Delete';
+
+    buttonDiv.appendChild(editButton)
+    buttonDiv.appendChild(deleteBtn)
+
+
+
+
     let taskDivCard = document.createElement('div')
+    taskDivCard.id = index
     taskDivCard.className= 'projectCards';
+    const taskDiv = document.createElement('div');
+    const taskheader = document.createElement('h3')
+    taskheader.textContent = 'Task Name';
     let taskTitle = document.createElement('h1');
+
+    const descriptionDiv =document.createElement('div')
+    const descriptionheader =document.createElement('h3')
+    descriptionheader.textContent = 'Task Description';
     let taskDescription = document.createElement('p');
+
+    const dueDateDiv =document.createElement('div')
+    const dueDateHeader = document.createElement('h3');
+    dueDateHeader.textContent = 'Due Date'
     let dueDate = document.createElement('p');
+
+    const priorityDiv = document.createElement('div');
+    const priorityheader = document.createElement('h3');
+    priorityheader.textContent = 'Priority';
     let priority =document.createElement('p')
     let inputDiv = document.createElement('div')
     let completedP = document.createElement('p')
@@ -73,17 +106,28 @@ function displayTasks (item){
     inputDiv.appendChild(completedP)
     inputDiv.appendChild(completed)
 
+    taskDiv.appendChild(taskheader)
+    taskDiv.appendChild(taskTitle)
+    descriptionDiv.appendChild(descriptionheader)
+    descriptionDiv.appendChild(taskDescription)
+    dueDateDiv.appendChild(dueDateHeader)
+    dueDateDiv.appendChild(dueDate)
+    priorityDiv.appendChild(priorityheader)
+    priorityDiv.appendChild(priority);
+
+
     taskTitle.textContent = item.task;
-    taskDescription.textContent = item.title
+    taskDescription.textContent = item.description
     dueDate.textContent = item.dueDate
     priority.textContent = item.priority
     console.log(item)
 
-    taskDivCard.appendChild(taskTitle)
-    taskDivCard.appendChild(taskDescription)
-    taskDivCard.appendChild(dueDate)
-    taskDivCard.appendChild(priority)
-    taskDivCard.appendChild(inputDiv)
+    taskDivCard.appendChild(buttonDiv)
+    taskDivCard.appendChild(taskDiv)
+    taskDivCard.appendChild(descriptionDiv)
+    taskDivCard.appendChild(dueDateDiv)
+    taskDivCard.appendChild(priorityDiv)
+   
     content.appendChild(taskDivCard)
 
 }
@@ -105,12 +149,10 @@ function projectListDom(array){
     }}
 
 function taskCardDisplay(array){
-
     
     for (let i = 0; i < array.length; i++){
         let index = array.indexOf(array[i])
-        displayTasks(array[i])
-
+        displayTasks(array[i], index)
     }
 }
 
