@@ -7,17 +7,36 @@ const backHeader = document.createElement('button');
 const todoFactory = (task, description,dueDate, priority) =>
 {  return{ task, description,dueDate, priority}}
 
+function closeBtn (){
+    const close = document.querySelector('.close')
+    const modal = document.querySelector('.projectModal');
+
+    close.addEventListener('click', () =>{
+        
+        modal.style.display = 'none'
+        taskModalNodeEdit()})
+      
+
+}
+
 function taskModalNodeEdit(){
+    const editSubmitButton = document.querySelector('.submitEdit')
+    const close = document.querySelector('.close')
+
     const headerBtn = document.querySelector('.todoheader');
     const modal = document.querySelector('.projectModal');
     const submitButton = document.querySelector('.submitProject')
     const taskSubmit = document.querySelector('.submitTask')
+
+
     const projectName =document.getElementById('projectNameLabel')
     const notes = document.getElementById('notes')
     const notesLabel = document.getElementById('notesLabel')
 
     headerBtn.addEventListener('click', () =>
    {
+
+    editSubmitButton.style.display = 'none'
     projectName.textContent = 'Task Name';
     notes.style.display = 'none';
     notesLabel.style.display = 'none';
@@ -25,9 +44,89 @@ function taskModalNodeEdit(){
     taskSubmit.textContent= 'Submit Task'
     taskSubmit.style.display = 'block'
     modal.style.display = 'block'
+    closeBtn()
+   
+
+
    } )
 
 }
+
+
+
+function editModalNodeEdit(index){
+
+    let item = currentArray.todoArray[index]
+    
+    
+    const editSubmitButton = document.querySelector('.submitEdit')
+    
+    const modal = document.querySelector('.projectModal');
+    const submitButton = document.querySelector('.submitTask')
+    const projectName =document.getElementById('projectNameLabel')
+
+    const descriptionLabel = document.getElementById('descriptionLabel');
+    const descriptionContent = document.getElementById('description');
+
+    const dueDatelabel  = document.getElementById('dueDateLabel')
+    const dueDateContent = document.getElementById('dueDate')
+
+    const projectNameContent = document.getElementById('projectName')
+    const notes = document.getElementById('notes')
+    const notesLabel = document.getElementById('notesLabel')
+    projectNameContent.textContent = null;
+    projectName.textContent = 'Edit Task Name';
+    projectNameContent.value = item.task 
+
+    descriptionLabel.textContent  = 'Edit Description';
+    descriptionContent.value = item.description;
+
+    dueDatelabel.textContent = 'Edit Due Date';
+    dueDateContent.value = item.dueDate
+
+    notes.style.display = 'none';
+    notesLabel.style.display = 'none';
+    submitButton.style.display = 'none';
+    modal.style.display = 'block'
+    editSubmitButton.style.display = 'block';
+}
+
+function pushEdit (index) {
+    const modal = document.querySelector('.projectModal');
+
+    const submitEdit = document.querySelector('.submitEdit')
+    const projectContent = document.getElementById('projectName');
+    const descriptionContent = document.getElementById('description');
+    const dueDateContent = document.getElementById('dueDate')
+    const priorit= document.getElementById('priority')
+    console.log(submitEdit)
+    console.log(currentArray)
+    let current = currentArray.todoArray[index]
+    console.log(current)
+
+
+    submitEdit.addEventListener('click', () =>{
+        let projectName = projectContent.value;
+        let description = descriptionContent.value;
+        let dueDateInfo = dueDateContent.value;
+        let priorityInfo = priorit.value
+        console.log(projectName)
+        current.task = projectName
+     //   index.description = description;
+       // index.dueDate = dueDateInfo;
+      //  index.priority = priorityInfo;
+        modal.style.display = 'none';
+        taskCardDisplay(currentArray.todoArray)
+        projectListDom(currentArray.todoArray)
+        deleteTask()
+        editTask()
+        current = currentArray
+  
+
+        console.log(currentArray)})
+       
+}
+
 
 function pushModalTask(){
     const projectName =document.getElementById('projectName')
@@ -40,15 +139,16 @@ function pushModalTask(){
 
     taskSubmit.addEventListener('click', () =>{
         taskModalNodeEdit()
-
+    
         const content = document.querySelector('.content');
         let newTask = todoFactory(projectName.value, description.value, dueDate.value, priority.value)
         currentArray.todoArray.push(newTask)
-        console.log(currentArray.todoArray)
         modal.style.display = 'none';
         content.textContent = null;
         taskCardDisplay(currentArray.todoArray)
         projectListDom(currentArray.todoArray)
+        editTask()
+
         deleteTask()
     } )
 
@@ -70,7 +170,8 @@ function displayTasks (item ,index){
     buttonDiv.appendChild(deleteBtn)
 
     let taskDivCard = document.createElement('div')
-    taskDivCard.id = item.task;
+    taskDivCard.id = item.task
+    taskDivCard.setAttribute('array',index)
     taskDivCard.className= 'projectCards';
     const taskDiv = document.createElement('div');
     const taskheader = document.createElement('h3')
@@ -120,8 +221,9 @@ function displayTasks (item ,index){
     taskDivCard.appendChild(descriptionDiv)
     taskDivCard.appendChild(dueDateDiv)
     taskDivCard.appendChild(priorityDiv)
-   
+
     content.appendChild(taskDivCard)
+
 }
 
 function liDisplay (item) {
@@ -141,8 +243,13 @@ function projectListDom(array){
     }}
 
 function taskCardDisplay(array){
+
+    const content = document.querySelector('.content');
+    content.textContent = null;
+
     
     for (let i = 0; i < array.length; i++){
+        
         let index = array.indexOf(array[i])
         displayTasks(array[i], index)
     }
@@ -181,8 +288,19 @@ function viewProject(){
          projectListDom(currentArray.todoArray)
          taskModalNodeEdit()
          taskCardDisplay(currentArray.todoArray)
+         editTask()
+         deleteTask()
+     
+     
+  
 
-    })   
+  
+ 
+       
+
+    })  
+
+ 
    });
 }
 
@@ -208,6 +326,32 @@ backHeader.addEventListener('click', () =>{
    })
 }
 
+function editTask (){
+    let editButton = document.querySelectorAll('.editButton');
+    const modal = document.querySelector('.projectModal');
+
+
+    editButton.forEach(elem => elem.addEventListener('click', event =>{
+
+        let editObject = null;
+        const submitButton = document.querySelector('.submitTask')
+        submitButton.style.display = 'none';
+
+        const cardNumber = event.target.parentNode.parentNode
+
+    let index = cardNumber.getAttribute('array')
+    console.log(index)
+
+
+    editModalNodeEdit(index)
+    pushEdit(index)
+
+    })
+    
+    )
+
+}
+
 function deleteTask (){
     const content = document.querySelector('.content');
     let deleteBtn = document.querySelectorAll('.taskDeleteButton');
@@ -226,4 +370,4 @@ function deleteTask (){
  
  }
 
-export {viewProject, pushModalTask,returnBtn}
+export {viewProject, pushModalTask,returnBtn,editTask}

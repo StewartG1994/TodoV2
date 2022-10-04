@@ -14,6 +14,8 @@ function projectAddition (item) {
 }
 
 function projectModalNodeEdit(){
+    const editSubmitButton = document.querySelector('.submitEdit')
+
     const headerBtn = document.querySelector('.todoheader');
     const modal = document.querySelector('.projectModal');
     const submitButton = document.querySelector('.submitProject')
@@ -27,6 +29,7 @@ function projectModalNodeEdit(){
 
     headerBtn.addEventListener('click', () =>
    {
+    editSubmitButton.style.display = 'none';
     projectName.textContent = 'Project Name';
     notes.style.display = 'block';
     notesLabel.style.display = 'block';
@@ -38,7 +41,15 @@ function projectModalNodeEdit(){
 
 }
 
+function closeProject ()
+{
+    const modal = document.querySelector('.projectModal');
 
+    const close = document.querySelector('.close')
+    close.addEventListener('click', () =>{
+        modal.style.display = 'none'
+       projectModalNodeEdit()})
+}
 
 function clearModal (){
     const projectName =document.getElementById('projectName')
@@ -56,18 +67,23 @@ function openModal (){
     const close = document.querySelector('.close')
 
     addProject.addEventListener('click', () => {
+        const editSubmitButton = document.querySelector('.submitEdit')
+        editSubmitButton.style.display = 'none';
         projectModalNodeEdit()
         modal.style.display = 'block';
+
+        closeProject()
         clearModal()
+        
         
     })
 
-    close.addEventListener('click', () =>{modal.style.display = 'none'})
 
 }
 
 function submitProject(){
     const modal = document.querySelector('.projectModal');
+    
 
     const submitButton = document.querySelector('.submitProject')
     const projectName =document.getElementById('projectName')
@@ -78,6 +94,9 @@ function submitProject(){
   
 
     submitButton.addEventListener('click', () => {
+
+
+
 
         projectAddition(projectFactory(projectName.value, description.value, dueDate.value, priority.value, notes.value))
         projectCardDisplay(projectArray)
