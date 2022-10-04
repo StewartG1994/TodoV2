@@ -267,6 +267,17 @@ input[type=checkbox]{
     background-color: #77DD77;
   }
 
+  .submitEdit{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 7px;
+    border: none;
+    background-color: #77DD77;
+  }
+
+
 .taskModal{
     display: none;
 }

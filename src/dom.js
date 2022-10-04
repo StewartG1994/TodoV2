@@ -1,8 +1,10 @@
-import { projectArray } from './info';
+import { projectArray, closeProject } from './info';
 import down from './svg/down.png'
 
 const projectListNode = document.querySelector('.listUI');
 const content = document.querySelector('.content');
+
+
 
 function liDisplay (item) {
   
@@ -133,6 +135,7 @@ function deleteProject (){
    content.removeChild(cardRemove)
    projectListNode.textContent = null;
    projectListDom(projectArray)
+   closeProject()
 
 }))
 

@@ -112,9 +112,9 @@ function pushEdit (index) {
         let priorityInfo = priorit.value
         console.log(projectName)
         current.task = projectName
-     //   index.description = description;
-       // index.dueDate = dueDateInfo;
-      //  index.priority = priorityInfo;
+        current.description = description;
+        current.dueDate = dueDateInfo;
+        current.priority = priorityInfo;
         modal.style.display = 'none';
         taskCardDisplay(currentArray.todoArray)
         projectListDom(currentArray.todoArray)

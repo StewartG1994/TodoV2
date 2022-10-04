@@ -116,4 +116,4 @@ projectAddition(projectFactory('Default Project', 'Use the description box to cr
 
 
 
-export {projectArray, openModal , submitProject , projectModalNodeEdit}
+export {projectArray, openModal , submitProject , projectModalNodeEdit, closeProject}
