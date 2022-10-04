@@ -42,8 +42,6 @@ function pushModalTask(){
         taskModalNodeEdit()
 
         const content = document.querySelector('.content');
-
-        console.log(currentArray.todoArray)
         let newTask = todoFactory(projectName.value, description.value, dueDate.value, priority.value)
         currentArray.todoArray.push(newTask)
         console.log(currentArray.todoArray)
@@ -51,6 +49,7 @@ function pushModalTask(){
         content.textContent = null;
         taskCardDisplay(currentArray.todoArray)
         projectListDom(currentArray.todoArray)
+        deleteTask()
     } )
 
     
@@ -59,25 +58,19 @@ function pushModalTask(){
 function displayTasks (item ,index){
 
     const content = document.querySelector('.content');
-
     const buttonDiv = document.createElement('div');
     const editButton  = document.createElement('button');
     const deleteBtn = document.createElement('button');
     editButton.className = 'editButton';
     deleteBtn.className = 'taskDeleteButton'
     buttonDiv.className = 'buttonDiv'
-
     editButton.textContent = 'Edit';
     deleteBtn.textContent = 'Delete';
-
     buttonDiv.appendChild(editButton)
     buttonDiv.appendChild(deleteBtn)
 
-
-
-
     let taskDivCard = document.createElement('div')
-    taskDivCard.id = index
+    taskDivCard.id = item.task;
     taskDivCard.className= 'projectCards';
     const taskDiv = document.createElement('div');
     const taskheader = document.createElement('h3')
@@ -129,8 +122,6 @@ function displayTasks (item ,index){
     taskDivCard.appendChild(priorityDiv)
    
     content.appendChild(taskDivCard)
-    deleteTask()
-
 }
 
 function liDisplay (item) {
@@ -158,6 +149,7 @@ function taskCardDisplay(array){
 }
 
 function viewProject(){
+
     const viewButton = document.querySelectorAll('.viewProjectButton');
     const projectList = document.querySelector('.projectList')
     const content = document.querySelector('.content');
@@ -190,14 +182,8 @@ function viewProject(){
          taskModalNodeEdit()
          taskCardDisplay(currentArray.todoArray)
 
-    })
-
-    
+    })   
    });
-
-
-
-
 }
 
 function returnBtn (){
@@ -212,39 +198,30 @@ backHeader.addEventListener('click', () =>{
     projectModalNodeEdit()
     backHeader.style.display = 'none';
     projectLI.style.display = 'block'
-    projectTitle.textContent = 'List of projects'
-    
+    projectTitle.textContent = 'List of projects' 
     backHeader.textContent = null;
     headerBtn.textContent = '+ Project'
-    console.log(projectArray)
     viewProject()
     deleteProject()
     projectDropDowns()
-    console.log(projectArray)
+
    })
 }
 
 function deleteTask (){
     const content = document.querySelector('.content');
-
     let deleteBtn = document.querySelectorAll('.taskDeleteButton');
     deleteBtn.forEach(button => button.addEventListener('click', event =>{
-     console.log('DeleteTestTaks')
-    const cardNumber = event.target.parentNode.parentNode.id;
-    console.log(cardNumber)
-    
+    const cardNumber = event.target.parentNode.parentNode.id
 
     const indexObject = currentArray.todoArray.findIndex(object =>{
-        return  object.title === cardNumber;
+        return  object.task === cardNumber;
         })
 
-    console.log(indexObject)
-
-
+    currentArray.todoArray.splice(indexObject,1)
     let cardRemove = event.target.parentNode.parentNode;
     content.removeChild(cardRemove)
-
- 
+    projectListDom(currentArray.todoArray)
  }))
  
  }
