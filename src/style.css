@@ -135,14 +135,14 @@ table {
 }
 
 .projectCards{
+    
     width: 90%;
     background-color: #F4F4F2;
     border-radius: 10px;
     padding: 20px;
     display: grid;
     box-shadow: 7px 19px 21px 11px #CFD1CB; 
-    align-items: center;
-    
+    align-items: center;   
 }
 
 h3{
@@ -157,7 +157,6 @@ h3{
 }
 
 .viewProjectButton{
-
     border-radius: 5px;
     padding: 7px;
     border: none;
@@ -180,10 +179,7 @@ h3{
 
 
 }
-.notesDiv{
-    display: flex;
-    flex-direction: column;
-}
+
 
 .dropdown-notes {
     display: none;
@@ -195,7 +191,10 @@ h3{
   }
 
   .displayDropDown {
-    display: flex;
+    position: relative;
+    display: inline-block;
+
+    
   }
 
 input[type=checkbox]{
@@ -267,7 +266,7 @@ input[type=checkbox]{
     background-color: #77DD77;
   }
 
-  .submitEdit{
+  .submitTask{
     display: none;
     align-items: center;
     justify-content: center;
