@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Todo App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+      
+    <script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
+    <body>
+        <div class="container">
+
+<div class="projectModal">
+    <div class="modalContent">
+        <button class ='close'  type="button">Close</button>
+    <form class = 'projectForm'>
+                <label id = projectNameLabel for="projectName">Project Name:</label>
+                <input  type="text" id="projectName" placeholder="Name" name="projectName" />            
+
+                <label id = descriptionLabel for="description">Description:</label>
+                <input type="text" id="description" name="description"/>
+                <label id = dueDateLabel for="dueDate">Due Date:</label>
+                <input type="text" id="dueDate" name="dueDate">
+                <label id = 'dueDateLabel' for="dueDate">Priority:</label>
+                <select id="priority" name="priority">
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+
+                <label id = 'notesLabel' for="notes">Notes:</label>
+                <input type="text" id="notes" name="notes">
+                <button class ='submitProject'  type="button">Submit</button>
+                <button class ='submitTask'  type="button">Submit</button>
+                <button class ='submitEdit'  type="button">Submit Edit</button>
+
+
+              </form>
+          
+          
+            </div>
+            </div>
+
+
+<div class="topbar"><button class ='todoheader'  type="button">+ Project</button></div>
+<div class="leftbar">
+
+
+    <ul class="projectList">
+    <h1 class="projectHeader">List of projects</h1><br>
+<ul class = 'listUI'></div>
+<div class="content">
+  
+</div>
+
+        </div>
+      
+    </body>
+</html>
+
