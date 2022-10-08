@@ -51,6 +51,7 @@ table {
    
 
     height: 100vh;
+
   
     grid-template-areas: 
     'nav header header header'
@@ -183,7 +184,6 @@ h3{
 
 .dropdown-notes {
     display: none;
-    position: relative;
     padding-top: 10px;
     min-width: 160px;
     z-index: 1;
@@ -191,7 +191,6 @@ h3{
   }
 
   .displayDropDown {
-    position: relative;
     display: inline-block;
 
     
@@ -204,7 +203,7 @@ input[type=checkbox]{
 
 .projectModal{
     display: none;
-    position: fixed; 
+
     z-index: 1;
     left: 0;
     top: 0;
