@@ -1,4 +1,5 @@
 import { projectArray, closeProject } from './info';
+import { validProjectForm } from './valid';
 import down from './svg/down.png'
 
 const projectListNode = document.querySelector('.listUI');
